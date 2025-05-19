@@ -1,0 +1,135 @@
+<!-- Save as potion-lab.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Magic Potion Lab - Inventory</title>
+  <style>
+    body {
+      background-color: #1e0033;
+      color: #e5d4ff;
+      font-family: 'Verdana', sans-serif;
+      max-width: 700px;
+      margin: 40px auto;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 20px #aa33ff;
+    }
+    h1, h2 {
+      text-align: center;
+      color: #d68aff;
+    }
+    .inventory {
+      display: flex;
+      justify-content: space-around;
+      margin-top: 30px;
+    }
+    .potion {
+      background: #330044;
+      padding: 20px;
+      border-radius: 10px;
+      text-align: center;
+      box-shadow: 0 0 10px #aa33ff99;
+    }
+    .potion h3 {
+      margin-bottom: 10px;
+    }
+    .count {
+      font-size: 2em;
+      font-weight: bold;
+    }
+    .status {
+      margin-top: 30px;
+      text-align: center;
+      font-weight: bold;
+      white-space: pre-line;
+    }
+    .ok {
+      color: #99ffbb;
+    }
+    .warn {
+      color: #ffaaaa;
+    }
+    nav {
+      text-align: center;
+      margin-top: 30px;
+    }
+    nav a {
+      color: #ffccff;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    nav a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+
+<h1>🧪 Magic Potion Lab</h1>
+<h2>Potion Inventory & Check</h2>
+
+<div class="inventory">
+  <div class="potion">
+    <h3>Healing</h3>
+    <div class="count" id="healingCount"></div>
+  </div>
+  <div class="potion">
+    <h3>Mana</h3>
+    <div class="count" id="manaCount"></div>
+  </div>
+  <div class="potion">
+    <h3>Stamina</h3>
+    <div class="count" id="staminaCount"></div>
+  </div>
+</div>
+
+<div class="status" id="checkStatus"></div>
+
+<nav>
+  <a href="brew-simulation.html">➡️ Simulate Brewing</a>
+</nav>
+
+<script>
+  // --- Declarations ---
+  var healing = 5;
+  var mana = 7;
+  var stamina = 3;
+
+  document.getElementById("healingCount").textContent = healing;
+  document.getElementById("manaCount").textContent = mana;
+  document.getElementById("staminaCount").textContent = stamina;
+
+  // --- Conditionals ---
+  var statusText = "";
+
+  if (healing >= 5) {
+    statusText += "✅ Healing potions are ready\n";
+  } else {
+    statusText += "⚠️ Need more Healing potions\n";
+  }
+
+  if (mana >= 5) {
+    statusText += "✅ Mana potions are sufficient\n";
+  } else {
+    statusText += "⚠️ Low Mana potions\n";
+  }
+
+  if (stamina >= 5) {
+    statusText += "✅ Stamina potions are good\n";
+  } else {
+    statusText += "⚠️ Stamina potions below target\n";
+  }
+
+  var statusDiv = document.getElementById("checkStatus");
+  statusDiv.textContent = statusText;
+
+  if (healing >= 5 && mana >= 5 && stamina >= 5) {
+    statusDiv.className = "status ok";
+  } else {
+    statusDiv.className = "status warn";
+  }
+</script>
+
+</body>
+</html>

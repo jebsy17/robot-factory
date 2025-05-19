@@ -1,0 +1,88 @@
+<!-- Save as brew-simulation.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Magic Potion Lab - Brewing Simulation</title>
+  <style>
+    body {
+      background-color: #1e0022;
+      color: #ffeaff;
+      font-family: 'Courier New', Courier, monospace;
+      max-width: 700px;
+      margin: 40px auto;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 20px #ff44dd;
+    }
+    h1, h2 {
+      text-align: center;
+      color: #ff99dd;
+    }
+    pre {
+      background: #330033;
+      padding: 20px;
+      border-radius: 10px;
+      white-space: pre-wrap;
+      box-shadow: inset 0 0 10px #ff44dd88;
+      max-height: 400px;
+      overflow-y: auto;
+    }
+    nav {
+      text-align: center;
+      margin-top: 30px;
+    }
+    nav a {
+      color: #ffc4ff;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    nav a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+
+<h1>🧪 Magic Potion Lab</h1>
+<h2>Brewing Simulation - 7 Days</h2>
+
+<pre id="brewLog">Starting simulation...</pre>
+
+<nav>
+  <a href="potion-lab.html">⬅️ Back to Inventory</a>
+</nav>
+
+<script>
+  // --- Declarations ---
+  var healing = 5;
+  var mana = 7;
+  var stamina = 3;
+
+  var day = 1;
+  var log = "";
+
+  // --- Looping: 7 days ---
+  while (day <= 7) {
+    log += "Day " + day + ":\n";
+
+    if (day % 2 === 0) {
+      healing += 1;
+      mana += 2;
+      stamina += 1;
+      log += "  🔧 Brew day: +1 Healing, +2 Mana, +1 Stamina\n";
+    } else {
+      mana = mana - 1 >= 0 ? mana - 1 : 0;
+      stamina = stamina - 1 >= 0 ? stamina - 1 : 0;
+      log += "  🌙 Rest day: -1 Mana, -1 Stamina\n";
+    }
+
+    log += "  Totals => Healing: " + healing + ", Mana: " + mana + ", Stamina: " + stamina + "\n\n";
+    day = day + 1;
+  }
+
+  document.getElementById("brewLog").textContent = log;
+</script>
+
+</body>
+</html>
